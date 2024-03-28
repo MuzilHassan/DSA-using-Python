@@ -164,6 +164,7 @@ l.insert(2,2)
 l.insert(3,50)
 l.extend([9,0,8])
 l.sort(reverse=True)
+
 print(l)
 
-
+print(l[0])
