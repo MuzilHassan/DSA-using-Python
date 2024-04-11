@@ -162,25 +162,110 @@ class LinkedList:
             cur=cur.next
             pos+=1
         return cur.data
+#linkList related Questions
+    def replace_max(self,value):
+        if self.n==0:
+            return "list is empty"
+        if self.head.next==None:
+            self.head.data=value
+            return
+        cur=self.head
+        tem=None
+        max=0
+        while(cur!=None):
+            if cur.data>max:
+                max=cur.data
+                tem=cur
+            cur=cur.next
+        tem.data=value
+
+    def sum_odds(self):
+        sum=0
+        cur=self.head
+        count=0
+        while(cur!=None):
+            if count%2!=0 :
+                sum+=cur.data
+            cur=cur.next
+            count+=1
+        return  sum
+
+    def reverse(self):
+        if self.head.next==None:
+            print("Empty")
+            return
+
+        cur=self.head
+        prev=None
+        temp=cur
+        while temp!=None:
+            temp=temp.next
+            cur.next=prev
+            prev=cur
+            cur=temp
+        self.head=prev
+
+    def changeSentence(self):
+        cur=self.head
+        while cur!=None:
+            if (cur.data=="/" or cur.data=="*") and cur.next and(cur.next.data=="/" or cur.next.data=="*"):
+                cur.next.next.data=cur.next.next.data.upper()
+                cur.data=" "
+                cur.next=cur.next.next
+                cur=cur.next.next
+                continue
+
+            if cur.data=="/" or cur.data=="*":
+                cur.data=""
+            cur=cur.next
+
+
+
+
+
 
 a=LinkedList()
 
-a.insert_head(8)
+# a.insert_head(8)
+#
+# a.insert_head(6)
+# a.append(10)
+# a.append(30)
+# #
+# a.insert_after(32,9)
+# a.insert(18,4)
+# #a.delete_front()
+# #a.delete_end()
+# a.delete_value(18)
+# a.traverse()
+# a.append(420)
+# a.insert(7,5)
+# a.insert_after(70,420)
+# # a.after(7,12)
+#
+# #a.delete_value(420)
+# # a.replace_max(40)
+# # a.replace_max(20)
+# print(a)
+# a.reverse()
+a.append("T")
+a.append("h")
+a.append("e")
+a.append("/")
+a.append("*")
+a.append("s")
+a.append("k")
+a.append("y")
+a.append("/")
+a.append("i")
+a.append("s")
+a.append("/")
+a.append("*")
+a.append("B")
+a.append("l")
+a.append("u")
+a.append("e")
 
-a.insert_head(9)
-a.append(10)
-
-a.insert_after(32,9)
-a.insert(18,4)
-#a.delete_front()
-#a.delete_end()
-a.delete_value(18)
-a.traverse()
-a.append(420)
-a.insert(7,5)
-a.insert_after(70,420)
-#a.after(7,12)
 print(a)
-#a.delete_value(420)
-print(a[5])
+a.changeSentence()
 print(a)
